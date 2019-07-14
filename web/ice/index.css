@@ -1,0 +1,244 @@
+body{
+    padding:0;
+    margin: 0;
+}
+
+img{
+    border:0;
+}
+.full{
+    width: 100%;
+}
+.fixed{
+    width: 1600px;
+    margin-left: auto;
+    margin-right:auto;
+}
+.aaa{
+    height: 70px;
+
+}
+.header{
+    background-color: #6f9d72;
+    height: 70px;
+    position: absolute;
+    width: 100%;
+
+}
+.box{
+    height: 70px;
+    width: 320px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-160px);
+}
+
+.logo{
+    background-image: url(img/logo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-top: 8px;
+    margin-left: 10px;
+    position:relative;
+}
+.nav ul{
+    margin: 0;
+    padding: 0;
+    float:left;
+    padding-top: 30px;
+    position:relative;
+}
+.nav li{
+    list-style-type: none;
+    float: left;
+    height: 15px;
+}
+.nav a{
+    text-decoration: none;
+    padding-left: 20px;
+    display: block;
+    font-family: Trebuchet MS;
+    text-align: center;
+    line-height: 15px;
+    font-size:14px;
+    color:#fdfbfb;
+    transition: color .2s;
+}
+.nav a:hover{
+    text-decoration: none;
+    padding-left: 20px;
+    display: block;
+    font-family: Trebuchet MS;
+    text-align: center;
+    line-height: 15px;
+    font-size:14px; 
+    color:#ddc45d;
+
+}
+
+.slider{
+    background-image: url(img/111.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.ice{
+    width: 350px;
+    height: 100px;
+    background-color: #ffffff;
+    margin-right: 50px;
+    margin-top: 460px;
+    float: right;
+    opacity:0.7;
+}
+.h1-1{
+    font-family: 華康雅宋體;
+    text-align: center;
+    font-size:25px;
+    margin-top: 35px;
+    margin-left: 25px;
+    position: absolute;
+    color: #736969;
+}
+.bbb{
+    height: 100vh;
+    background-color: #46c49a;
+    height: 100vh;
+    margin-top: -14px;
+}
+.word{
+    position: relative;
+}
+.b-ice{
+    position: absolute;
+    right: 0;
+    top: 100vh;
+    margin-top: 69px;
+    height: 100vh;
+}
+.h9{
+    font-family: Trebuchet MS;
+    font-weight: lighter;
+    text-align: left;
+    color:#ffffff;
+    font-size:20px;
+    padding-top: 50px;
+    margin-left: 100px;
+}
+.h2-1{
+    font-family: 華康雅宋體;
+    font-weight: lighter;
+    text-align: left;
+    color:#ffffff;
+    font-size:40px;
+    padding-top: 5px;
+    margin-left: 100px;
+
+}
+.h2-2{
+    font-family: 華康雅宋體;
+    font-weight: lighter;
+    text-align: left;
+    color:#ffffff;
+    font-size: 21px;
+    line-height: 42px;
+    padding-top: 50px;
+    margin-left: 100px;
+}
+
+.sbox{
+    background-color: #d4d0d0;
+    height: 70px;
+    width: 200px;
+    margin-left: 100px;
+}
+.h2-3{
+    font-family: Trebuchet MS;
+    text-align: center;
+    line-height: 15px;
+    font-size:14px;
+    color:#080808;
+}
+.FACE{
+    width: 200px;
+    height: 200px;
+    margin-left: 100px;
+}
+.ccc{
+    height: 100vh;
+    background-color: #ddc45d;
+    padding: 0 95px;
+    text-align: center;
+}
+.ccc img {
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    padding: 20px;
+}
+.ccc img:hover {
+    z-index: 2;
+    opacity: 0.5;
+    transition: opacity .5s;
+}
+.ccc .ice-1{
+    margin-top: 125px;
+}
+
+.ddd{
+    height: 480px;
+    background-color: #95bad4;
+}
+.CONTACT{
+    margin-left: 60px;
+    position:absolute;
+}
+.ddd .h9 {
+    padding-top: 0;
+}
+.ddd img{
+    width: 50px;
+}
+.ddd span{
+    color: #ffffff;
+    display: inline-block;
+    transform: translateY(-21px);
+    margin-left: 11px;
+}
+.ddd .phone,.ddd .mail,.ddd .fb,.ddd .ig{
+    margin-bottom: 10px;
+}
+.info{
+    padding-top: 121px;
+    padding-left: 226px;
+}
+
+.MAP{
+    width: 400px;
+    height: 300px;
+    margin-right: 74px;
+    float: right;
+    border-color: gray;
+    border-style: solid;
+    position: relative;
+    margin-top: -283px;
+}
+.footer{
+    background-color: #6f9d72;
+    padding-top: 46px;
+    padding-bottom: 46px;
+}
+
+.h8-1{
+    font-family: Trebuchet MS;
+    text-align: center;
+    line-height: 15px;
+    font-size:14px;
+    color:#fcf9f9;
+    display: block;
+}

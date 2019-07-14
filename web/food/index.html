@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111120698-1"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中午吃什麼</title>
+    <!--vue-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"></script>
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--slick js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"
+        charset="utf-8"></script>
+    <!--wow.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <!--reset css-->
+    <link rel="stylesheet" href="css/reset.css?v=0703" />
+    <!--slick css-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <!--animate.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <!--css-->
+    <link rel="stylesheet" href="css/style_pc_first.css?v=0703" />
+
+
+
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <button class="mobile_menu_icon" @click="menu_icon()">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <div id="mobile_nav" :class="{'open': menu_iconIsOpen}">
+            <ul>
+                <li><a href="javascript:;" class="sec_1" @click="menu_btn('menu-m','kv')">首 頁</a></li>
+                <li><a href="javascript:;" class="sec_2" @click="menu_btn('menu-m','choose')">篩 選</a></li>
+                <li><a href="javascript:;" class="sec_3" @click="menu_btn('menu-m','list')">找點子</a></li>
+                <li><a href="javascript:;" class="sec_4" @click="menu_btn('menu-m','contact')">聯絡我</a></li>
+            </ul>
+
+        </div>
+
+        <div id="header">
+            <div id="nav">
+                <ul>
+                    <li><a href="javascript:;" class="sec_1" @click="menu_btn('menu','kv')">首 頁</a></li>
+                    <li><a href="javascript:;" class="sec_2" @click="menu_btn('menu','choose')">篩 選</a></li>
+                    <li><a href="javascript:;" class="sec_3" @click="menu_btn('menu','list')">找點子</a></li>
+                    <li><a href="javascript:;" class="sec_4" @click="menu_btn('menu','contact')">聯絡我</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+
+
+            <div id="kv">
+
+                <div class="slider">
+                    <div class="slider-bg img1"></div>
+                    <div class="slider-bg img2"></div>
+                    <div class="slider-bg img3"></div>
+                </div>
+
+                <img src="images/arrow_left.png" class="arrow-left">
+                <img src="images/arrow_right.png" class="arrow-right">
+
+                <div class="dots-nav"></div>
+
+                <div class="kvbox">
+                    <img src="images/icon_kv.png" class="kv_icon" alt="">
+                    <h1 class="kv_title">What to eat<br>for<br>Lunch</h1>
+                    <a href="javascript:;" @click="menu_btn('kv_arrow','choose')">
+                        <img src="images/icon_arrow.png" class="kv_arrow" alt="">
+                    </a>
+                </div>
+            </div>
+            <transition>
+                <div class="subscription" v-show="subscriptionIsShow">
+                    <div class="subscription_box" :class="{'open': subscriptionIsOpen}">
+                        <label class="h1-3">訂閱電子報</label>
+                        <input type="email" name="your_email" class="get_email" placeholder="Email" autocomplete="off"
+                            v-model="subscription.email">
+                        <span class="email_alert">{{mailAlert}}</span>
+                        <button type="submit" class="button_email" @click="sub_btn">訂閱</button>
+                    </div>
+                    <div class="subscription_button" @click="subscriptionIsOpen = !subscriptionIsOpen">
+                        <img src="images/icon_kv.png" class="subscription_icon" alt="">
+                        <span class="subscription_text">Subscription</span>
+                    </div>
+
+                </div>
+            </transition>
+
+            <div id="choose">
+                <div class="wow fadeInUp" data-wow-offset="85">
+                    <div class="choose_box" v-show="!lightboxIsOpen">
+                        <h1 class="h2-1">No Idea For Eating?</h1>
+                        <h2 class="h2-2">Do you ever fall into a lunch rut? Every week when planning my grocery list, I
+                            always pause when it comes to making a plan for the week's lunches. Turkey wraps again? It
+                            can be hard to find tasty and easy-to-prepare options that are also healthy.</h2>
+                    </div>
+
+                    <div id="select" v-if="selectIsSeen">
+                        <ul>
+                            <li>
+                                <div class="select1" @click="select_out('1')">
+                                    <a><span>{{selectTitle.price}}</span><img src="images/icon_select_down.png" class="select_updown1" alt="" :class="{'change' : select1IsOpen}"></a>
+                                </div>
+                                <div class="select1-1">
+                                    <ul>
+                                        <li @click="select_in('1','100內')"><a>100內</a></li>
+                                        <li @click="select_in('1','100-200')"><a>100-200</a></li>
+                                        <li @click="select_in('1','200以上')"><a>200以上</a></li>
+                                    </ul>
+                                </div>
+<!--
+                                <div class="select1-1">
+                                    <ul v-for="i in priceItem">
+                                        <li @click="select_in()"><a>{{ i.price }}</a></li>
+                                    </ul>
+                                </div>
+-->
+                            </li>
+
+
+                            <li>
+                                <div class="select2" @click="select_out('2')">
+                                    <a><span>{{selectTitle.type}}</span><img src="images/icon_select_down.png" class="select_updown2" alt="" :class="{'change' : select2IsOpen}"></a>
+                                </div>
+                                <div class="select2-1">
+                                    <ul>
+                                        <li @click="select_in('2','麵食')"><a>麵食</a></li>
+                                        <li @click="select_in('2','米飯')"><a>米飯</a></li>
+                                        <li @click="select_in('2','麵包')"><a>麵包</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+
+                    <button type="button" class="button_eat" @click="eat_box()" v-show="!lightboxIsOpen">隨便給我吃的</button>
+                    <br>
+
+                    <p class="more-setting" @click="settingOpen" v-show="!lightboxIsOpen">{{ setting_button.text }}</p>
+                    <!--<p class="close-setting">close setting</p>-->
+
+                    <div class="lightbox" v-show="lightboxIsOpen" v-if="this.eat_box_data">
+                        <img :src="'images/'+this.eat_box_data.data[0].img" class="food_06" alt="">
+                        <div class="food_word">
+                            <p class="h4-1">{{this.eat_box_data.data[0].name}}</p>
+                            <span>價錢：</span>
+                            <p class="h4-2">{{this.eat_box_data.data[0].price}}</p>
+                            <br>
+                            <span>電話：</span>
+                            <p class="h4-3">{{this.eat_box_data.data[0].tel}}</p>
+                            <br>
+                            <span>地址：</span>
+                            <p class="h4-4">{{this.eat_box_data.data[0].addr}}</p>
+                        </div>
+
+                        <div class="close" @click="lightboxIsOpen = false">
+                            <a><img src="images/icon_close.png" class="icon_close" alt=""></a>
+                            <p class="h3-3">close</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="list">
+                <div class=" wow fadeInUp food_in" data-wow-offset="85">
+                    <p class="h2-1">Restaurants List</p>
+                    <div id="tab">
+                        <ul class="tab-title">
+                            <li><a class="noodle" :class="{'active': type ==='noodle' }" @click="food_list('麵食','noodle')">麵食</a></li>
+                            <li>
+                                <hr class="hr">
+                            </li>
+                            <li><a class="rice" :class="{'active': type ==='rice' }" @click="food_list('米飯','rice')">米飯</a></li>
+                            <li>
+                                <hr class="hr">
+                            </li>
+                            <li><a class="bread" :class="{'active': type ==='bread' }" @click="food_list('麵包','bread')">麵包</a></li>
+                            <li>
+                                <hr class="hr">
+                            </li>
+                            <li><a class="all" :class="{'active': type ==='all' }" @click="food_list('','all')">All</a></li>
+                        </ul>
+
+                    </div>
+
+                    <!-- list列表 -->
+
+                    <div class="food_wrapper">
+                        <div class="food_inbox" v-for="item in stores" v-show="item.type == newtitle || newtitle === ''">
+                            <img :src="'images/'+item.img " class="food_photo" alt="">
+                            <p class="h3-4">{{item.name}}</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div id="contact">
+                <div class="wow fadeInUp" data-wow-offset="85">
+                    <p class="h2-1">Contact us</p>
+                    <div class="contact_in">
+                        <input type="text" name="contact_name" class="contact_name" placeholder="姓名" autocomplete="off"
+                            v-model="contact.name">
+                        <input type="email" name="contact_email" class="contact_email" placeholder="Email" autocomplete="off"
+                            v-model="contact.email">
+                        <br>
+                        <textarea type="text" name="contact_text" class="contact_text" placeholder="留言" autocomplete="off"
+                            v-model="contact.text"></textarea>
+                    </div>
+                    <button type="button" class="contact_button" @click="contact_btn">確認送出</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="footer">
+            <div class="footer_in">
+                <img src="images/footer_logo.jpg" class="footer_logo" alt="">
+                <p class="h3-5">台北市106大安區忠孝東路四段325號9樓</p>
+                <div class="footer_iconbox">
+                    <a href="http://www.facebook.com/WebGene" target=_blank><img src="images/icon_blog.png" class="footer_icon"
+                            alt=""></a>
+                    <a href="http://www.facebook.com/WebGene" target=_blank><img src="images/icon_youtube.png" class="footer_icon"
+                            alt=""></a>
+                    <a href="http://www.facebook.com/WebGene" target=_blank><img src="images/icon_fb.png" class="footer_icon"
+                            alt=""></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>

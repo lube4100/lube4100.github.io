@@ -1,0 +1,223 @@
+
+<html lang="en">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111120698-4"></script>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/reset.css" />
+        <!-- fullPage.js v2.9.7 / css-->
+        <link rel="stylesheet" href="vendor/jquery.fullPage.css"/>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/index.css" />
+
+        <title>lube chao</title>
+
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="nav">
+                <img src="img/logo.png" alt="">
+                <ul>
+                    <li><a href="#kv" data-menuanchor="kv" class="active" @click="go('menu','menuClose')">首頁</a></li>
+                    <li><a href="#about" data-menuanchor="about" @click="go('menu','menuClose')">關於我</a></li>
+                    <li><a href="#experience" data-menuanchor="experience" @click="go('menu','menuClose')">經歷</a></li>
+                    <li><a href="#portfolio" data-menuanchor="portfolio" @click="go('menu','menuClose')">作品</a></li>
+                    <li><a href="#contact" data-menuanchor="contact" @click="go('menu','menuClose')">聯絡我</a></li>
+                </ul>
+                <p>© 2019 LUBE</p>
+            </div>
+            <div class="m-nav" @click="go('menu','menuOpen')">
+                <span class="hamburguer">
+                    <span class="bar bar1"></span>
+                    <span class="bar bar2"></span>
+                    <span class="bar bar3"></span>
+                </span>
+            </div>
+            <div class="m-bg"></div>
+
+
+            <div id="fullpage">
+                <div class="section sec1">
+                   <div class="box">
+                    <div class="kv-pic">
+                        <img src="img/kv-pic.JPG" alt="">
+                    </div>
+                    <span>TZU-JIE CHAO</span>
+                    <div class="line move"></div>
+                    </div>
+                </div>
+                <div class="section sec2">
+                    <div class="pagetag">關於我</div>
+                    <div class="box">
+                        <div class="info">
+                            <img src="img/me.jpg" alt="">
+                            <div class="info-word">
+                                <span>我是趙子潔，</span>
+                                <span>畢業於淡江資訊傳播學系，</span>
+                                <span>因緣際會下接觸網頁前端，</span>
+                                <span>展開一場學習程式的旅程，</span>
+                                <span>很喜歡打完程式看到成果的成就感，</span>
+                                <span>雖然途中常常遭遇挫折，但也越挫越勇，</span>
+                                <span>藉由解決困難來更充實自己。</span>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>技能</span>
+                            <div class="skill-box">
+                                <ul class="skill1">
+                                    <li>熟悉HTML5與CSS3語言</li>
+                                    <li>響應式RWD應用</li>
+                                    <li>基礎JavaScript知識</li>
+                                    <li>運用jQuery與CSS3做簡單動態</li>
+                                </ul>
+                                <ul class="skill2">
+                                    <li>Vue.js框架基本應用</li>
+                                    <li>運用ajax串接後端api</li>
+                                    <li>後端語言PHP與MySQL簡單應用</li>
+                                    <li>利用git進行版本控管</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section sec3">
+                    <div class="pagetag">經歷</div>
+                    <div class="box">
+                        <div class="stairs">
+                            <div class="s1" :class="{'active': stairNow ==='a' }" @click="choosencomp('a')">畢業製作： 《解靈人》</div>
+                            <div class="s2" :class="{'active': stairNow ==='b' }" @click="choosencomp('b')">實習： 網路基因 技術部 </div>
+                            <div class="s3" :class="{'active': stairNow ==='c' }" @click="choosencomp('c')">學習： 創意數位媒體教學實習中心</div>
+                            <div class="s4" :class="{'active': stairNow ==='d' }" @click="choosencomp('d')">社團： 淡江大學高雄校友會</div>
+                            <div class="s5" :class="{'active': stairNow ==='e' }" @click="choosencomp('e')">大學： 淡江大學資訊傳播學系</div>
+                        </div>
+                        <component :is="whichcomp"></component>
+
+                    </div>
+                </div>
+                <div class="section sec4">
+                    <div class="pagetag">作品</div>
+                    <div class="slide" v-if="screenWidth>900">
+                        <div class="web">
+                            <img src="img/s1-1.png" alt="">
+                            <span class="title">《淡事》專案網站</span>
+                            <span class="word">為畢葉製作《淡事》做一個專案網站，展示專案所做的內容、淡水古蹟介紹與活動紀錄，讓觀看者能透過網站更了解此專案的應用，也能藉此做推廣專案。</span>
+                            <div class="btn" @click="go('web','tamstory')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                        <div class="web">
+                            <img src="img/s1-2.png" alt="">
+                            <span class="title">《解靈人》實境解謎——解謎網站</span>
+                            <span class="word">《解靈人》是一套融合淡水古蹟的實境解謎遊戲，是《淡事》專案下的產品，玩家能透過此解謎網站登入序號、取隊名、輸入答案、索取提示、查看排行榜。我獨自完成前後端的部分，應用php與mysql做資料管理，並與前端網頁連接，給玩家更便利的遊玩過程。 <span class="login_text">*參觀登入序號：test</span></span>
+                            <div class="btn" @click="go('web','soulMan')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                    </div>
+                    <div class="slide" v-if="screenWidth>900">
+                        <div class="web">
+                            <img src="img/s2-1.png" alt="">
+                            <span class="title">中午吃什麼</span>
+                            <span class="word">暑假在網路基因實習時做的一個小專案，也藉由架這個網站學到許多技巧，更磨練了自己的基本功。也在這個專案學了一點php，將店家資料存在資料庫，再利用ajax從資料庫讀取資料來呈現，並且做了一個後台來管理店家資料。</span>
+                            <div class="btn" @click="go('web','food')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                        <div class="web">
+                            <img src="img/s2-2.png" alt="">
+                            <span class="title">國泰－高登計畫 首頁</span>
+                            <span class="word">在網基實習時，接觸到的一個真實專案，雖然並不是整個首頁都是我獨立完成，但能有機會參與案子的一部分，也讓我學到許多，包含與設計的溝通以及測試後的種種debug，都是一段很特別的經驗。</span>
+                            <div class="btn" @click="go('web','golden')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                    </div>
+                    <div class="slide" v-if="screenWidth>900">
+                        <div class="web">
+                            <img src="img/s3-1.png" alt="">
+                            <span class="title">散步路徑</span>
+                            <span class="word">這是我剛學html、css的時候，做的第一個onepage練習網站，雖然內容很簡單，也沒有RWD，但也花了我多時間和心力。內容是我很喜歡的一間冰店，以繽紛的色彩來營造不同口味且不同顏色的霜淇淋。</span>
+                            <div class="btn" @click="go('web','ice')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                        <div class="web">
+                            <img src="img/s3-2.png" alt="">
+                            <span class="title">欸！等一下要吃什麼</span>
+                            <span class="word">以淡江學生為出發點，由於時常聽到大家為等一下要吃什麼很苦惱，因此決定做了一個介紹淡江周遭小吃的美食地圖，除了店家資訊之外，還有隨機幫你選擇餐廳的功能，替大學生解決不知道要吃什麼的困擾。因為還沒學會使用資料庫，因此以比較徒法煉鋼的方式完成。</span>
+                            <div class="btn" @click="go('web','tkuFood')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- mobile content-->
+                    <div class="slide" v-if="screenWidth<900">
+                        <div class="web">
+                            <img src="img/s1-1.png" alt="">
+                            <span class="title">《淡事》專案網站</span>
+                            <span class="word">為畢葉製作《淡事》做一個專案網站，展示專案所做的內容、淡水古蹟介紹與活動紀錄，讓觀看者能透過網站更了解此專案的應用，也能藉此做推廣專案。</span>
+                            <div class="btn" @click="go('web','tamstory')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                    </div>
+                    <div class="slide" v-if="screenWidth<900">
+                        <div class="web">
+                            <img src="img/s1-2.png" alt="">
+                            <span class="title">《解靈人》實境解謎——解謎網站</span>
+                            <span class="word">《解靈人》是一套融合淡水古蹟的實境解謎遊戲，是《淡事》專案下的產品，玩家能透過此解謎網站登入序號、取隊名、輸入答案、索取提示、查看排行榜。我獨自完成前後端的部分，應用php與mysql做資料管理，並與前端網頁連接，給玩家更便利的遊玩過程。<span class="login_text">*參觀登入序號：test</span></span>
+                            <div class="btn" @click="go('web','soulMan')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                    </div>
+                    <div class="slide" v-if="screenWidth<900">
+                        <div class="web">
+                            <img src="img/s2-1.png" alt="">
+                            <span class="title">中午吃什麼</span>
+                            <span class="word">暑假在網路基因實習時做的一個小專案，也藉由架這個網站學到許多技巧，更磨練了自己的基本功。也在這個專案學了一點php，將店家資料存在資料庫，再利用ajax從資料庫讀取資料來呈現，並且做了一個後台來管理店家資料。</span>
+                            <div class="btn" @click="go('web','food')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                    </div>
+                    <div class="slide" v-if="screenWidth<900">
+                        <div class="web">
+                            <img src="img/s2-2.png" alt="">
+                            <span class="title">國泰－高登計畫 首頁</span>
+                            <span class="word">在網基實習時，接觸到的一個真實專案，雖然並不是整個首頁都是我獨立完成，但能有機會參與案子的一部分，也讓我學到許多，包含與設計的溝通以及測試後的種種debug，都是一段很特別的經驗。</span>
+                            <div class="btn" @click="go('web','golden')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                    </div>
+                    <div class="slide" v-if="screenWidth<900">
+                        <div class="web">
+                            <img src="img/s3-1.png" alt="">
+                            <span class="title">散步路徑</span>
+                            <span class="word">這是我剛學html、css的時候，做的第一個onepage練習網站，雖然內容很簡單，也沒有RWD，但也花了我多時間和心力。內容是我很喜歡的一間冰店，以繽紛的色彩來營造不同口味且不同顏色的霜淇淋。</span>
+                            <div class="btn" @click="go('web','ice')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                    </div>
+                    <div class="slide" v-if="screenWidth<900">
+                        <div class="web">
+                            <img src="img/s3-2.png" alt="">
+                            <span class="title">欸！等一下要吃什麼</span>
+                            <span class="word">以淡江學生為出發點，由於時常聽到大家為等一下要吃什麼很苦惱，因此決定做了一個介紹淡江周遭小吃的美食地圖，除了店家資訊之外，還有隨機幫你選擇餐廳的功能，替大學生解決不知道要吃什麼的困擾。因為還沒學會使用資料庫，因此以比較徒法煉鋼的方式完成。</span>
+                            <div class="btn" @click="go('web','tkuFood')"><span>參觀網站</span><div class="arrow"></div></div>
+                        </div>
+                    </div>
+                    <!-- mobile content end--> 
+
+                </div>
+                <div class="section sec5">
+                    <div class="pagetag">聯絡我</div>
+                    <div class="box">
+                        <img src="img/me2.jpg" alt="">
+                        <div class="info">
+                            <div><span class="icon-iconmonstr-user-1"></span><span class="name">趙子潔</span></div>
+                            <div><span class="icon-iconmonstr-email-3"></span><span class="mail">lube44011@gmail.com</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--vue-->
+        <script src="vendor/vue.min.js"></script>
+        <!--jquery-->
+        <script src="vendor/jquery-3.3.1.min.js"></script>
+        <!-- fullPage.js v2.9.7 / js-->
+        <script src="vendor/jquery.fullPage.js"></script>
+        <!--index-->
+        <script src="js/index.js"></script>
+
+    </body>
+</html>
+
+
+
