@@ -34,7 +34,7 @@ body {
 }
 #nav>p {
     position: absolute;
-    bottom: 21px;
+    bottom: 2%;
     color: #BBA786;
     font-size: 13px;
     letter-spacing: 1.2;
@@ -765,12 +765,18 @@ body {
 }
 @media only screen and (max-width: 414px) {
 
+    #nav>img {
+        top: 12%;
+    }
     .pagetag {
         top: 2%;
         right: -100px;
         font-size: 13px;
         padding: 10px 15px;
         width: 100px;
+    }
+    .sec1 .box {
+        height: 317px;
     }
     .sec1 img {
         width: 303px;
@@ -779,8 +785,11 @@ body {
         width: 303px;
         height: 230px;
     }
+    .sec2 .box .info:before,.sec2 .box .info::after {
+        display: none;
+    }
     .sec2 .box img {
-        width: 158px;
+        width: 130px;
         float: none;
     }
     .sec2 .box .info-word {
@@ -789,14 +798,17 @@ body {
         float: none;
     }
     .sec2 .box .skill {
-        padding: 20px 10px;
-        margin-top: 37px;
+        padding: 9px 3px;
+        margin-top: 29px;
     }
     .sec2 .box .skill ul li {
         font-size: 12px;
     }
     .sec2 .box .skill span {
         margin-right: 16px;
+    }
+    .sec2 .box .skill .skill2 {
+        margin-bottom: -14px;
     }
     .sec3 .stairs div {
         height: 40px;
@@ -824,7 +836,7 @@ body {
         margin-left: 0;
         padding-right: 0;
         margin-top: 10px;
-        height: 258px;
+        height: 238px;
     }
     .sec3 .stairs-content .title {
         font-size: 16px;
@@ -832,7 +844,7 @@ body {
     .sec3 .stairs-content .word {
         max-width: none;
         padding: 0 12%;
-        font-size: 14px;
+        font-size: 13px;
         margin-top: 10px;
         margin-bottom: 10px;
     }
