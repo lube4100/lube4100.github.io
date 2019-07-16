@@ -147,7 +147,7 @@ $(function(){
 
                             gtag('config', 'UA-111120698-4', {
                                 'page_title': 'page-about',
-                                'page_path': '/index_kv'
+                                'page_path': '/index_about'
                             });
 
 
@@ -187,18 +187,23 @@ $(function(){
             },
             //click btn
             go(now,object){
+
                 if(object == 'menuOpen' || object == 'menuClose'){
                     $('body').toggleClass('menu-open');
                 }
                 else if(now == 'web'){
+                    gtag('event', 'click', {
+                        event_category: now + '_click',
+                        event_action: 'web_' + object
+                    });
                     if(object == 'tamstory'){
                         window.open("http://tamstory.azurewebsites.net");
                     }else if(object == 'soulMan'){
                         $('.sec4').find('.login_text').addClass('mark');
                         setTimeout(function () {
-                                window.open("http://tamstory.azurewebsites.net/soulMan");
+                            window.open("http://tamstory.azurewebsites.net/soulMan");
                             $('.sec4').find('.login_text').removeClass('mark');
-                            }, 1000);
+                        }, 1000);
                     }else if(object == 'food'){
                         window.open("../web/food");
                     }else if(object == 'golden'){
