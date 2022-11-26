@@ -322,6 +322,7 @@ body {
     background-color: #CEB79B;
     position: relative;
     margin-right: 16px;
+    padding-left: 40px;
     display: flex;
     align-items: center;
     justify-content: end;
