@@ -83,6 +83,7 @@ body {
     width: 120px;
     -webkit-transition: all linear .2s;
     transition: all linear .2s;
+    z-index: 10;
 }
 .pagetag.movein {
     right: 0;
@@ -132,7 +133,7 @@ body {
     content: "";
     position: absolute;
     width: 438px;
-    height: 328px;
+    height: 312px;
     background-color: #D3756E;
     bottom: 23px;
     left: 23px;
@@ -254,22 +255,23 @@ body {
     /*    display: inline-block;*/
     float: left;
     margin-top: 42px;
+    margin-left: 30px;
 }
 .sec2 .box .info-word span {
     color: #9B8970;
     display: block;
     letter-spacing: 2;
     text-align: left;
-    margin-left: 30px;
     line-height: 1.7;
 }
 .sec2 .box .skill {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     padding: 30px 86px 20px 52px;
     background-color: #C6AF95;
     margin-top: 28px;
 }
-.sec2 .box .skill span {
+.sec2 .box .skill .skill-title {
     -webkit-writing-mode: vertical-lr;
     -ms-writing-mode: tb-lr;
     writing-mode: vertical-lr;
@@ -281,7 +283,7 @@ body {
     margin-bottom: 13px;
     margin-right: 8px;
 }
-.sec2 .box .skill span::after {
+.sec2 .box .skill .skill-title::after {
     content: "";
     position: absolute;
     width: 14px;
@@ -292,31 +294,95 @@ body {
     z-index: -1;
 }
 .sec2 .box .skill .skill-box {
-    display: inline-block;
-}
-.sec2 .box .skill ul {
-    display: inline-block;
+    display: flex
 }
 .sec2 .box .skill ul li {
     color: #ffffff;
     font-size: 15px;
-    margin-left: 20px;
-    position: relative;
     text-align: left;
     letter-spacing: 1.5px;
 }
 .sec2 .box .skill ul li:before {
     content: "\2022";
     color: #ffffff;
-    font-size: 12px;
-    position: absolute;
-    left: -11px;
-    top: 3px;
 }
 
 
 .sec3 .box {
-    display: inline-block;
+    width: 90vw;
+    max-width: 720px;
+}
+.sec3 .arrow-wrap {
+    display: flex;
+    margin-bottom: 20px;
+}
+.sec3 .arrow {
+    width: 200px;
+    height: 70px;
+    background-color: #CEB79B;
+    position: relative;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: #ffffff;
+    cursor: pointer;
+}
+.sec3 .arrow::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-width: 35px;
+    border-style: solid;
+    border-color: transparent transparent transparent #DCCCB2;
+    position: absolute;
+    left: 0;
+}
+.sec3 .arrow::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-width: 35px;
+    border-style: solid;
+    border-color: transparent transparent transparent #CEB79B;
+    position: absolute;
+    right: -70px;
+    z-index: 2;
+}
+.sec3 .arrow.active {
+    background-color: #BBA786;
+}
+.sec3 .arrow.active::after {
+    border-color: transparent transparent transparent #BBA786;
+}
+.sec3 .arrow-note {
+    position: absolute;
+    top: -26px;
+    left: 16px;
+    font-size: 13px;
+    color: #BBA786;
+}
+.sec3 .experience-text {
+    min-height: 460px;
+    color: #9B8970;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    border: 1px dashed #BBA786;
+    padding: 10px;
+    background-color: #e7d7be;
+}
+.sec3 .experience-text-note {
+    color: #B7996E;
+    margin-bottom: 10px;
+}
+.sec3 .experience-text-title {
+    color: #B7996E;
+}
+.sec3 .experience-text li {
+    margin-left: 5px;
+}
+.sec3 .experience-text li::before {
+    content: "\2022";
 }
 .sec3 .stairs div {
     height: 50px;
@@ -398,6 +464,7 @@ body {
 }
 .sec4 .web {
     max-width: 350px;
+    min-height: 500px;
     text-align: center;
     margin: 0 30px;
 }
@@ -492,10 +559,26 @@ body {
 .sec5 .box {
     border: 2px solid #CC6E62;
     padding: 31px 50px;
+    display: flex;
+    align-items: center;
 }
 .sec5 img {
     width: 280px;
     border-radius: 50%;
+}
+.sec5 .contact-img-wrap {
+    position: relative;
+}
+.sec5 .contact-img-wrap::after {
+    content: '';
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background-color: #D3756E;
+    position: absolute;
+    z-index: -1;
+    left: -10px;
+    bottom: -10px;
 }
 .sec5 .info {
     display: inline-block;
@@ -711,18 +794,6 @@ body {
         font-size: 14px;
         margin-top: 14px;
     }
-
-    /*
-    .sec2 .box .skill span {
-    display: inline-block;
-}
-    .sec2 .box .skill .skill2 {
-    display: block;
-}
-    .sec2 .box .skill {
-    padding: 30px;
-}
-    */
     .sec2 .box .info:before {
         left: 0;
         top: 0;
@@ -735,20 +806,20 @@ body {
         padding: 30px 86px 20px 88px;
         margin-top: 80px;
     }
-    .sec2 .box .skill ul {
-        display: block;
+    .sec2 .box .skill .skill-box {
+        flex-direction: column;
     }
-    .sec2 .box .skill .skill2 {
-        margin-top: -14px;
+    .sec2 .box .skill ul {
+        margin-bottom: 0;
     }
     .sec2 .box .skill ul li {
         font-size: 14px;
     }
-    .sec2 .box .skill span {
+    .sec2 .box .skill .skill-title {
         margin-bottom: 56px;
         margin-right: 51px;
     }
-    .sec3 .stairs {
+    /* .sec3 .stairs {
         float: none;
         padding-left: 42px;
     }
@@ -756,6 +827,23 @@ body {
         float: none;
         margin-top: 38px;
         height: 310px;
+    } */
+    .sec3 .arrow-wrap {
+        font-size: 13px;
+    }
+    .sec3 .arrow {
+        width: 150px;
+        height: 40px;
+    }
+    .sec3 .arrow::before {
+        border-width: 20px;
+    }
+    .sec3 .arrow::after {
+        border-width: 20px;
+        right: -40px;
+    }
+    .sec5 .box {
+        flex-direction: column;
     }
     .sec5 .info {
         display: block;
@@ -798,19 +886,54 @@ body {
         float: none;
     }
     .sec2 .box .skill {
-        padding: 9px 3px;
+        padding: 6px;
         margin-top: 29px;
+        display: flex;
+        flex-direction: column;
     }
     .sec2 .box .skill ul li {
+        font-size: 13px;
+    }
+    .sec2 .box .skill .skill-title {
+        margin-bottom: 10px;
+        margin-right: 0;
+        writing-mode: lr;
+    }
+    .sec2 .box .skill .skill-title::after {
+        width: 100%;
+        height: 10px;
+        top: auto;
+        right: auto;
+        left: -2px;
+        bottom: 0;
+    }
+    .sec3 .box {
+        width: 90vw;
+        max-width: 720px;
+        padding-top: 24px;
+    }
+    .sec3 .arrow {
+        display: flex;
+        flex-direction: column;
+    }
+    .sec3 .arrow::before {
+        border: none;
+    }
+    .sec3 .arrow::after {
+        border: none;
+    }
+    .sec3 .arrow-note {
+        top: 38px;
+        left: 1px;
         font-size: 12px;
+        transform: scale(0.9);
     }
-    .sec2 .box .skill span {
-        margin-right: 16px;
+    .sec3 .experience-text {
+        line-height: 1.2;
+        font-size: 13px;
     }
-    .sec2 .box .skill .skill2 {
-        margin-bottom: -14px;
-    }
-    .sec3 .stairs div {
+    
+    /* .sec3 .stairs div {
         height: 40px;
         margin-bottom: 7px;
         line-height: 40px;
@@ -851,6 +974,9 @@ body {
     .sec3 .stairs-content .btn div {
         padding: 7px 9px;
         font-size: 12px;
+    } */
+    .sec4 .web {
+        min-height: 400px;
     }
     .sec4 .web img {
         height: 153px;
@@ -904,6 +1030,13 @@ body {
     }
     .sec5 img {
         width: 205px;
+        margin-left: 5px;
+    }
+    .sec5 .contact-img-wrap::after {
+        width: 205px;
+        height: 205px;
+        left: -3px;
+        bottom: -3px;
     }
     .sec5 .info>div {
         margin: 19px 0;

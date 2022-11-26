@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/index.css" />
 
-        <title>lube_chao</title>
+        <title>TzuJie_Chao</title>
 
     </head>
     <body>
@@ -26,7 +26,7 @@
                     <li><a href="#portfolio" data-menuanchor="portfolio" @click="go('menu','menuClose')">作品</a></li>
                     <li><a href="#contact" data-menuanchor="contact" @click="go('menu','menuClose')">聯絡我</a></li>
                 </ul>
-                <p>© 2019 LUBE</p>
+                <p>© 2022 LUBE</p>
             </div>
             <div class="m-nav" @click="go('menu','menuOpen')">
                 <span class="hamburguer">
@@ -60,23 +60,23 @@
                                 <span>展開一場學習程式的旅程，</span>
                                 <span>很喜歡打完程式看到成果的成就感，</span>
                                 <span>雖然途中常常遭遇挫折，但也越挫越勇，</span>
-                                <span>藉由解決困難來更充實自己。</span>
+                                <span>藉由解決困難與學習新知來充實自己。</span>
                             </div>
                         </div>
                         <div class="skill">
-                            <span>技能</span>
+                            <span class="skill-title">技能</span>
                             <div class="skill-box">
-                                <ul class="skill1">
+                                <ul>
                                     <li>熟悉HTML5與CSS3語言</li>
                                     <li>響應式RWD應用</li>
-                                    <li>基礎JavaScript知識</li>
-                                    <li>運用jQuery與CSS3做簡單動態</li>
+                                    <li>熟悉JavaScript與ES6知識</li>
+                                    <li>熟悉Vue.js與VueX / Vue-Router應用</li>
+                                    <li>運用Ajax串接後端API</li>
                                 </ul>
-                                <ul class="skill2">
-                                    <li>Vue.js框架基本應用</li>
-                                    <li>運用ajax串接後端api</li>
-                                    <li>後端語言PHP與MySQL簡單應用</li>
-                                    <li>利用git進行版本控管</li>
+                                <ul>
+                                    <li>後端語言PHP基礎與MySQL簡單應用</li>
+                                    <li>熟悉Git指令並依循Git Flow進行版本控管</li>
+                                    <li>應用Lighthouse檢測網頁與優化SEO</li>
                                 </ul>
                             </div>
                         </div>
@@ -85,15 +85,70 @@
                 <div class="section sec3">
                     <div class="pagetag">經歷</div>
                     <div class="box">
-                        <div class="stairs">
-                            <div class="s1" :class="{'active': stairNow ==='a' }" @click="choosencomp('a')">畢業製作： 《解靈人》</div>
-                            <div class="s2" :class="{'active': stairNow ==='b' }" @click="choosencomp('b')">實習： 網路基因 技術部 </div>
-                            <div class="s3" :class="{'active': stairNow ==='c' }" @click="choosencomp('c')">學習： 創意數位媒體教學實習中心</div>
-                            <div class="s4" :class="{'active': stairNow ==='d' }" @click="choosencomp('d')">社團： 淡江大學高雄校友會</div>
-                            <div class="s5" :class="{'active': stairNow ==='e' }" @click="choosencomp('e')">大學： 淡江大學資訊傳播學系</div>
+                        <div class="arrow-wrap">
+                            <div class="arrow" :class="{'active': activeExperience === 'tku'}" @click="activeExperience = 'tku'">
+                                <span>淡江</span><span>資訊傳播學系</span>
+                                <p class="arrow-note">2016/09 - 2019/06</p>
+                            </div>
+                            <div class="arrow" :class="{'active': activeExperience === 'webgine'}" @click="activeExperience = 'webgine'">
+                                <span>網路基因</span><span>技術部實習</span>
+                                <p class="arrow-note">2018/07-2019/01</p>
+                            </div>
+                            <div class="arrow" :class="{'active': activeExperience === 'ruten'}" @click="activeExperience = 'ruten'">
+                                <span>露天拍賣</span><span>前端工程師</span>
+                                <p class="arrow-note">2019/08-2022/10</p>
+                            </div>
                         </div>
-                        <component :is="whichcomp"></component>
-
+                        <div class="experience-text" v-if="activeExperience === 'tku'">
+                            <p class="experience-text-title">資訊傳播學系</p>
+                            <ul>
+                                <li>在系上接觸到許多技能，包含拍照技巧、照片編修、電腦繪圖、影音剪輯、行銷知識、數位行銷、程式設計等等，在其中發現自己對程式很有興趣，進而自己多加學習。</li>
+                            </ul>
+                            <p class="experience-text-title">創意數位媒體教學實習中心 —— 網站組</p>
+                            <ul>
+                                <li>於大二通過甄選加入系上創意數位媒體教學實習中心的網站組，透過讀書會的方式互相分享與教學更多行銷與網頁程式相關的知識，並回家自主學習，在這裡磨練了許多寫網站的技巧。</li>
+                            </ul>
+                            <p class="experience-text-title">畢業製作 —— 《淡事》</p>
+                            <ul>
+                                <li>在大四畢業製作過程中，與組員共同發想專案主題與內容，並設計活動與展覽，在互相分工與團隊合作下，我們在半年的時間完成屬於我們與淡水的作品《淡事》與以淡水古蹟為主題的實境解謎《解靈人》。</li>
+                            </ul>
+                        </div>
+                        <div class="experience-text" v-if="activeExperience === 'webgine'">
+                            <p class="experience-text-title">實習過程</p>
+                            <ul>
+                                <li>實際到業界學習才發現自己有許多的不足，很慶幸在網基擁有很自由的學習空間以及很願意教的前輩們，讓我技能level up，並且有了實戰的經驗，也了解到網站專案的流程。</li>
+                            </ul>
+                            <p class="experience-text-title">練習與實戰經驗</p>
+                            <ul>
+                                <li>練習切版、jQuery應用與學習Vue.js</li>
+                                <li>學習後端語言PHP與MySQL，如何從資料庫撈資料</li>
+                                <li>實際參與專案，練習使用第三方套件，並藉此了解專案運作流程</li>
+                            </ul>
+                        </div>
+                        <div class="experience-text" v-if="activeExperience === 'ruten'">
+                            <p class="experience-text-title">買家相關頁面維護與需求開發（首頁、商品頁、賣場頁、搜尋頁 等等）</p>
+                            <ul>
+                                <li>與企劃協調需求、與UI溝通樣式與動態、與後端串接API</li>
+                                <li>使用Git進行版本控制（也用過SVN）</li>
+                                <li>站上共用元件開發（ex.數量選擇器 / slideshow）</li>
+                                <li>專館推薦商品集合頁、運費券領券頁、雙11任務活動頁等頁面開發</li>
+                                <li>將運費券活動標籤改成後台上稿，節省配合活動不斷換圖的人力與時間</li>
+                                <li>運費券、賣家折扣碼前台頁面調整，提升購買量</li>
+                                <li>第三方登入相關頁面開發，提升註冊人數</li>
+                            </ul>
+                            <p class="experience-text-title">頁面重構</p>
+                            <ul>
+                                <li>使用Vue.js重構T3 module、jQuery的舊頁面（VueX / Vue-Router）</li>
+                                <li>商品頁模組化並應用VueX重構，提升Lighthouse分數</li>
+                                <li>首頁改版 (搭配Scrum敏捷開發)</li>
+                            </ul>
+                            <p class="experience-text-title">其他</p>
+                            <ul>
+                                <li>GTM&GA埋碼（GA電子商務），以利數據追蹤、觀測轉換率</li>
+                                <li>協助搜尋頁SEO優化並觀測Google Search Console數據</li>
+                                <li>解決手機版搜尋頁LCP問題，從不良回到優良（2.5秒以內）</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="section sec4">
@@ -108,8 +163,7 @@
                         <div class="web">
                             <img src="img/s1-2.png" alt="">
                             <span class="title">《解靈人》實境解謎——解謎網站</span>
-                            <span class="word">《解靈人》是一套融合淡水古蹟的實境解謎遊戲，是《淡事》專案下的產品，玩家能透過此解謎網站登入序號、取隊名、輸入答案、索取提示、查看排行榜。我獨自完成前後端的部分，應用php與mysql做資料管理，並與前端網頁連接，給玩家更便利的遊玩過程。 <span class="login_text">*參觀登入序號：test</span></span>
-                            <div class="btn" @click="go('web','soulMan')"><span>參觀網站</span><div class="arrow"></div></div>
+                            <span class="word">《解靈人》是一套融合淡水古蹟的實境解謎遊戲，是《淡事》專案下的產品，玩家能透過此解謎網站登入序號、取隊名、輸入答案、索取提示、查看排行榜。我獨自完成前後端的部分，應用PHP與MySQL做資料管理，並與前端網頁連接，給玩家更便利的遊玩過程。</span>
                         </div>
                     </div>
                     <div class="slide" v-if="screenWidth>900">
@@ -123,21 +177,6 @@
                             <img src="img/s2-2.png" alt="">
                             <span class="title">國泰－高登計畫 首頁</span>
                             <span class="word">在網基實習時，接觸到的一個真實專案，雖然並不是整個首頁都是我獨立完成，但能有機會參與案子的一部分，也讓我學到許多，包含與設計的溝通以及測試後的種種debug，都是一段很特別的經驗。</span>
-                            <div class="btn" @click="go('web','golden')"><span>參觀網站</span><div class="arrow"></div></div>
-                        </div>
-                    </div>
-                    <div class="slide" v-if="screenWidth>900">
-                        <div class="web">
-                            <img src="img/s3-1.png" alt="">
-                            <span class="title">散步路徑</span>
-                            <span class="word">這是我剛學html、css的時候，做的第一個onepage練習網站，雖然內容很簡單，也沒有RWD，但也花了我多時間和心力。內容是我很喜歡的一間冰店，以繽紛的色彩來營造不同口味且不同顏色的霜淇淋。</span>
-                            <div class="btn" @click="go('web','ice')"><span>參觀網站</span><div class="arrow"></div></div>
-                        </div>
-                        <div class="web">
-                            <img src="img/s3-2.png" alt="">
-                            <span class="title">欸！等一下要吃什麼</span>
-                            <span class="word">以淡江學生為出發點，由於時常聽到大家為等一下要吃什麼很苦惱，因此決定做了一個介紹淡江周遭小吃的美食地圖，除了店家資訊之外，還有隨機幫你選擇餐廳的功能，替大學生解決不知道要吃什麼的困擾。因為還沒學會使用資料庫，因此以比較徒法煉鋼的方式完成。</span>
-                            <div class="btn" @click="go('web','tkuFood')"><span>參觀網站</span><div class="arrow"></div></div>
                         </div>
                     </div>
 
@@ -154,8 +193,7 @@
                         <div class="web">
                             <img src="img/s1-2.png" alt="">
                             <span class="title">《解靈人》實境解謎——解謎網站</span>
-                            <span class="word">《解靈人》是一套融合淡水古蹟的實境解謎遊戲，是《淡事》專案下的產品，玩家能透過此解謎網站登入序號、取隊名、輸入答案、索取提示、查看排行榜。我獨自完成前後端的部分，應用php與mysql做資料管理，並與前端網頁連接，給玩家更便利的遊玩過程。<span class="login_text">*參觀登入序號：test</span></span>
-                            <div class="btn" @click="go('web','soulMan')"><span>參觀網站</span><div class="arrow"></div></div>
+                            <span class="word">《解靈人》是一套融合淡水古蹟的實境解謎遊戲，是《淡事》專案下的產品，玩家能透過此解謎網站登入序號、取隊名、輸入答案、索取提示、查看排行榜。我獨自完成前後端的部分，應用PHP與MySQL做資料管理，並與前端網頁連接，給玩家更便利的遊玩過程。</span>
                         </div>
                     </div>
                     <div class="slide" v-if="screenWidth<900">
@@ -171,23 +209,6 @@
                             <img src="img/s2-2.png" alt="">
                             <span class="title">國泰－高登計畫 首頁</span>
                             <span class="word">在網基實習時，接觸到的一個真實專案，雖然並不是整個首頁都是我獨立完成，但能有機會參與案子的一部分，也讓我學到許多，包含與設計的溝通以及測試後的種種debug，都是一段很特別的經驗。</span>
-                            <div class="btn" @click="go('web','golden')"><span>參觀網站</span><div class="arrow"></div></div>
-                        </div>
-                    </div>
-                    <div class="slide" v-if="screenWidth<900">
-                        <div class="web">
-                            <img src="img/s3-1.png" alt="">
-                            <span class="title">散步路徑</span>
-                            <span class="word">這是我剛學html、css的時候，做的第一個onepage練習網站，雖然內容很簡單，也沒有RWD，但也花了我多時間和心力。內容是我很喜歡的一間冰店，以繽紛的色彩來營造不同口味且不同顏色的霜淇淋。</span>
-                            <div class="btn" @click="go('web','ice')"><span>參觀網站</span><div class="arrow"></div></div>
-                        </div>
-                    </div>
-                    <div class="slide" v-if="screenWidth<900">
-                        <div class="web">
-                            <img src="img/s3-2.png" alt="">
-                            <span class="title">欸！等一下要吃什麼</span>
-                            <span class="word">以淡江學生為出發點，由於時常聽到大家為等一下要吃什麼很苦惱，因此決定做了一個介紹淡江周遭小吃的美食地圖，除了店家資訊之外，還有隨機幫你選擇餐廳的功能，替大學生解決不知道要吃什麼的困擾。因為還沒學會使用資料庫，因此以比較徒法煉鋼的方式完成。</span>
-                            <div class="btn" @click="go('web','tkuFood')"><span>參觀網站</span><div class="arrow"></div></div>
                         </div>
                     </div>
                     <!-- mobile content end--> 
@@ -196,7 +217,9 @@
                 <div class="section sec5">
                     <div class="pagetag">聯絡我</div>
                     <div class="box">
-                        <img src="img/me2.jpg" alt="">
+                        <div class="contact-img-wrap">
+                            <img src="img/me2.jpg" alt="">
+                        </div>
                         <div class="info">
                             <div><span class="icon-iconmonstr-user-1"></span><span class="name">趙子潔</span></div>
                             <div><span class="icon-iconmonstr-email-3"></span><span class="mail">lube44011@gmail.com</span></div>
